@@ -1,0 +1,229 @@
+/* React Micro Frontend Styles */
+.react-app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #fff;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(97, 218, 251, 0.3);
+}
+
+.react-logo {
+  font-size: 2.5rem;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, #61dafb, #21a1f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge {
+  background: rgba(97, 218, 251, 0.2);
+  color: #61dafb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(97, 218, 251, 0.3);
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: rgba(97, 218, 251, 0.05);
+  border: 1px solid rgba(97, 218, 251, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #61dafb;
+}
+
+/* Counter Styles */
+.counter-card {
+  text-align: center;
+}
+
+.counter-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 1rem 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #61dafb, #21a1f1);
+  color: #000;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(97, 218, 251, 0.5);
+  color: #61dafb;
+}
+
+.btn-outline:hover {
+  background: rgba(97, 218, 251, 0.1);
+}
+
+/* Todo Styles */
+.todo-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(97, 218, 251, 0.3);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.todo-input input:focus {
+  outline: none;
+  border-color: #61dafb;
+}
+
+.todo-input input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo-list li:hover {
+  background: rgba(97, 218, 251, 0.1);
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.btn-delete {
+  background: rgba(255, 100, 100, 0.2);
+  border: none;
+  color: #ff6464;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.btn-delete:hover {
+  background: rgba(255, 100, 100, 0.4);
+}
+
+/* Info Section */
+.info-section {
+  background: rgba(97, 218, 251, 0.05);
+  border: 1px solid rgba(97, 218, 251, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.info-section h3 {
+  color: #61dafb;
+  margin-bottom: 0.75rem;
+}
+
+.info-section p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.info-section code {
+  background: rgba(97, 218, 251, 0.2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: #61dafb;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-section li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.info-section li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #61dafb;
+}

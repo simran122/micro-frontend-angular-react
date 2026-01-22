@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="home-content" *ngIf="showHomeContent$ | async">
+    <h1>Micro Frontend Architecture</h1>
+    <p>Built with Single-SPA - One shell, multiple frameworks working together seamlessly.</p>
+    
+    <div class="tech-stack">
+      <div class="tech-card react">
+        <h3>React</h3>
+        <p>Micro Frontend #1</p>
+      </div>
+      <div class="tech-card angular-2">
+        <h3>Angular 2</h3>
+        <p>Dashboard MFE</p>
+      </div>
+    </div>
+  </div>
+  
+  <div id="single-spa-application:mfe-react-app" [style.display]="(showReactApp$ | async) ? 'block' : 'none'"></div>
+  
+  <div id="single-spa-application:mfe-angular-app-2" [style.display]="(showDashboardApp$ | async) ? 'block' : 'none'"></div>
+</div>
