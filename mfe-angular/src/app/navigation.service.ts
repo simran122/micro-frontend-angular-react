@@ -1,14 +1,16 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NavigationService {
+export class NavigationService implements OnDestroy {
   private pathSubject = new BehaviorSubject<string>(window.location.pathname);
   public currentPath$: Observable<string> = this.pathSubject.asObservable();
+  private routerSubscription?: Subscription;
+  private popstateHandler?: () => void;
 
   constructor(private router: Router, private ngZone: NgZone) {
     this.setupRouterListener();
@@ -21,7 +23,7 @@ export class NavigationService {
 
 
   private setupRouterListener(): void {
-    this.router.events
+    this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.pathSubject.next(event.url);
@@ -30,7 +32,7 @@ export class NavigationService {
 
  
   private setupPopstateListener(): void {
-    window.addEventListener('popstate', () => {
+    this.popstateHandler = () => {
       this.ngZone.run(() => {
         const currentUrl = window.location.pathname;
         this.pathSubject.next(currentUrl);
@@ -38,10 +40,21 @@ export class NavigationService {
           this.router.navigateByUrl(currentUrl, { skipLocationChange: true });
         }
       });
-    });
+    };
+    window.addEventListener('popstate', this.popstateHandler);
   }
 
+ 
   navigateTo(path: string): void {
     this.router.navigateByUrl(path);
+  }
+
+  ngOnDestroy(): void {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+    if (this.popstateHandler) {
+      window.removeEventListener('popstate', this.popstateHandler);
+    }
   }
 }
